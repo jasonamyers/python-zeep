@@ -44,7 +44,7 @@ def parse_xml(content, transport, base_url=None, strict=True,
                              recover=recover, huge_tree=xml_huge_tree)
     parser.resolvers.add(ImportResolver(transport))
     try:
-        return fromstring(content, parser=parser, base_url=base_url)
+        return fromstring(content, parser=parser, base_url=base_url, forbid_entities=False)
     except etree.XMLSyntaxError as exc:
         raise XMLSyntaxError(
             "Invalid XML content received (%s)" % exc.msg,
